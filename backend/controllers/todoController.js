@@ -14,12 +14,72 @@ const createToDo = async (req,res) => {
 const getAllToDo = async (req,res) => {
     try {
         const todo = await ToDo.find({}).sort({statue: -1})
+        res.status(200).json(todo)
     } catch (error) {
         res.status(400).json({error: error.message})
+    }
+}
+const getAllFinished = async (req,res) => {
+    try {
+        const todo = await ToDo.findOne({statue: "Finished"}).sort({date: -1})
+        res.status(200).json(todo)
+    } catch (error) {
+        res.status(400).json({error:error.message})
+    }
+}
+const getAllUnfinished = async (req,res) => {
+    try {
+        const todo = await ToDo.find({statue: "To Do"}).sort({date: -1})
+        res.status(200).json(todo)
+    } catch (error) {
+        res.status(400).json({error:error.message})
+    }
+}
+const getAllDoing = async (req,res) => {
+    try {
+        const todo = await ToDo.find({statue: "Doing"}).sort({date: -1})
+        res.status(200).json(todo)
+    } catch (error) {
+        res.status(400).json({error:error.message})
+    }
+}
+const changeStatueFinished = async (req,res) => {
+    const {id} = req.params
+
+    if (!mongoose.Types.ObjectId.isValid(id)) { // check if the input id is valid
+        return res.status(404).json({error: "no such todo"}) //remember to use return in if to end 
+    }
+    try {
+        const todo = await ToDo.findOneAndUpdate({_id: id}, {
+            statue: "Finished"
+        })
+        res.status(200).json(todo)
+    } catch (error) {
+        res.status(400).json({error:error.message})
+    }
+}
+const changeStatueDoing = async (req,res) => {
+    const {id} = req.params
+
+    if (!mongoose.Types.ObjectId.isValid(id)) { // check if the input id is valid
+        return res.status(404).json({error: "no such todo"}) //remember to use return in if to end 
+    }
+    try {
+        const todo = await ToDo.findOneAndUpdate({_id: id}, {
+            statue: "Doing"
+        })
+        res.status(200).json(todo)
+    } catch (error) {
+        res.status(400).json({error:error.message})
     }
 }
 
 module.exports = {
   createToDo,
-  getAllToDo
+  getAllToDo,
+  getAllDoing,
+  getAllFinished,
+  getAllUnfinished,
+  changeStatueFinished,
+  changeStatueDoing
 }
