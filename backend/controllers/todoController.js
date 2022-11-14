@@ -2,10 +2,10 @@ const ToDo = require('../models/todoModel')
 const mongoose = require('mongoose')
 
 const createToDo = async (req,res) => {
-    const {title, content, comment, statue} = req.body //set the req.body that's to be sent and remember to send it in raw JSON format
+    const {title, content, comment, status} = req.body //set the req.body that's to be sent and remember to send it in raw JSON format
 
     try {
-        const todo = await ToDo.create({title, content, comment, statue})
+        const todo = await ToDo.create({title, content, comment, status})
         res.status(200).json(todo)// notice todo object does not require to be in brackets  
     } catch (error) { //very important to add (error), otherwise is error undefined and could not be used in Homejs
         res.status(400).json({error: error.message})
@@ -13,7 +13,7 @@ const createToDo = async (req,res) => {
 }
 const getAllToDo = async (req,res) => {
     try {
-        const todo = await ToDo.find({}).sort({statue: -1})
+        const todo = await ToDo.find({}).sort({status: -1})
         res.status(200).json(todo)
     } catch (error) {
         res.status(400).json({error: error.message})
@@ -21,7 +21,7 @@ const getAllToDo = async (req,res) => {
 }
 const getAllFinished = async (req,res) => {
     try {
-        const todo = await ToDo.findOne({statue: "Finished"}).sort({date: -1})
+        const todo = await ToDo.findOne({status: "Finished"}).sort({date: -1})
         res.status(200).json(todo)
     } catch (error) {
         res.status(400).json({error:error.message})
@@ -29,7 +29,7 @@ const getAllFinished = async (req,res) => {
 }
 const getAllUnfinished = async (req,res) => {
     try {
-        const todo = await ToDo.find({statue: "To Do"}).sort({date: -1})
+        const todo = await ToDo.find({status: "To Do"}).sort({date: -1})
         res.status(200).json(todo)
     } catch (error) {
         res.status(400).json({error:error.message})
@@ -37,13 +37,13 @@ const getAllUnfinished = async (req,res) => {
 }
 const getAllDoing = async (req,res) => {
     try {
-        const todo = await ToDo.find({statue: "Doing"}).sort({date: -1})
+        const todo = await ToDo.find({status: "Doing"}).sort({date: -1})
         res.status(200).json(todo)
     } catch (error) {
         res.status(400).json({error:error.message})
     }
 }
-const changeStatueFinished = async (req,res) => {
+const changestatusFinished = async (req,res) => {
     const {id} = req.params
 
     if (!mongoose.Types.ObjectId.isValid(id)) { // check if the input id is valid
@@ -51,14 +51,14 @@ const changeStatueFinished = async (req,res) => {
     }
     try {
         const todo = await ToDo.findOneAndUpdate({_id: id}, {
-            statue: "Finished"
+            status: "Finished"
         })
         res.status(200).json(todo)
     } catch (error) {
         res.status(400).json({error:error.message})
     }
 }
-const changeStatueDoing = async (req,res) => {
+const changestatusDoing = async (req,res) => {
     const {id} = req.params
 
     if (!mongoose.Types.ObjectId.isValid(id)) { // check if the input id is valid
@@ -66,8 +66,21 @@ const changeStatueDoing = async (req,res) => {
     }
     try {
         const todo = await ToDo.findOneAndUpdate({_id: id}, {
-            statue: "Doing"
+            status: "Doing"
         })
+        res.status(200).json(todo)
+    } catch (error) {
+        res.status(400).json({error:error.message})
+    }
+}
+const deleteTodo = async (req,res) => {
+    const {id} = req.params
+
+    if (!mongoose.Types.ObjectId.isValid(id)) { 
+        return res.status(404).json({error: "no such todo"}) 
+    }
+    try {
+        const todo = await ToDo.findByIdAndDelete({_id: id})
         res.status(200).json(todo)
     } catch (error) {
         res.status(400).json({error:error.message})
@@ -76,10 +89,11 @@ const changeStatueDoing = async (req,res) => {
 
 module.exports = {
   createToDo,
+  deleteTodo,
   getAllToDo,
   getAllDoing,
   getAllFinished,
   getAllUnfinished,
-  changeStatueFinished,
-  changeStatueDoing
+  changestatusFinished,
+  changestatusDoing
 }

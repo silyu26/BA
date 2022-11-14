@@ -4,20 +4,22 @@ const router = express.Router()
 const ToDo = require('../models/todoModel')
 const {
   createToDo,
+  deleteTodo,
   getAllToDo,
   getAllDoing,
   getAllFinished,
   getAllUnfinished,
-  changeStatueFinished,
-  changeStatueDoing
+  changestatusFinished,
+  changestatusDoing
 } = require('../controllers/todoController')
 
 router.post("/",createToDo)
 router.get("/",getAllToDo)
+router.delete("/:id",deleteTodo)
 router.get("/finished",getAllFinished)
 router.get("/doing",getAllDoing)
 router.get("/unfinished",getAllUnfinished)
-router.patch("/finish/:id",changeStatueFinished)
-router.patch("/doing/:id",changeStatueDoing)
+router.patch("/finish/:id",changestatusFinished)
+router.patch("/doing/:id",changestatusDoing)
 
 module.exports = router

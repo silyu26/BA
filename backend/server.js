@@ -11,14 +11,16 @@ app.use(express.json())
 // const port = process.env.PORT || 5000;
 
 const todoRoutes = require('./routes/todoRoutes')
-
-app.use('/api/todo',todoRoutes)
+const planRoutes = require('./routes/planRoutes')
 
 app.get('/', (req,res)=>{
     res.json({
         message: "welcome to the app!"
     })
 })
+
+app.use('/api/todo',todoRoutes)
+app.use('/api/plan',planRoutes)
 
 mongoose.connect(process.env.MONGO_URI)
     .then(()=>{

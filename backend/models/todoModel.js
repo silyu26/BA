@@ -14,7 +14,7 @@ const todoSchema = new Schema({
         type: String,
         required: false
     },
-    statue: {
+    status: {
         type: String,
         default: "To Do"
     },
