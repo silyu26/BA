@@ -21,6 +21,14 @@ const todoSchema = new Schema({
     date: {
         type: Date,
         default: Date.now
+    },
+    seed: {
+        type: Number,
+        default: Math.floor(Math.random()*100)
+    },
+    plant: {
+        type: String,
+        default: ["Bushy","Dragon","Pilea","Zamia"][Math.floor(Math.random()*4)]
     }
 },{timestamps: false})
 

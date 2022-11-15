@@ -26,6 +26,14 @@ const planSchema = new Schema ({
     comment: {
         type: String,
         required: false
+    },
+    seed: {
+        type: Number,
+        default: Math.floor(Math.random()*100)
+    },
+    plant: {
+        type: String,
+        default: ["Bushy","Dragon","Pilea","Zamia"][Math.floor(Math.random()*4)]
     }
 },{timestamps: false})
 
