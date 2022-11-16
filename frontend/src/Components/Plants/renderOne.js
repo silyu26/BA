@@ -3,9 +3,9 @@ import Bushy from './bushy'
 import Dragon from './dragonTree'
 import Pilea from './pilea'
 
-const Render = (props) => {
-    let p = props.plant
-    let s = props.seed
+const Render = ({plant, seed}) => {
+    let p = plant
+    let s = seed
     const renderRandomPlant = () => {
         switch(p) {
             case "Zamia":

@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { SvgPlant, ZamiaGenus, BushyPlantGenus, DragonTreeGenus, PileaGenus } from 'svg-plant';
 
-const Pilea = (seedd) => {
+const Pilea = ({seedd}) => {
     const svg = useRef(null)
-    const [s,setS] = useState(seedd)
+    //const [s,setS] = useState(seedd)
 
     useEffect(() => {
-        const seed = s
-        const genus = new PileaGenus( seed )
+        //const seed = s
+        const genus = new PileaGenus( seedd )
         const cfg = {
             color: true,    // Boolean
             age: 0.5,         // Float [0,1]
@@ -25,7 +25,7 @@ const Pilea = (seedd) => {
     },[])
     return(
         <div>
-            <div ref={svg} style={{width: "150px"}} />
+            <div ref={svg} style={{width: "75px",height: "100px"}} />
         </div>
     )
 }

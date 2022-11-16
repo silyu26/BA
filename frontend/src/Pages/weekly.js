@@ -1,8 +1,12 @@
 import TodoForm from "../Components/Weekly/todoForm";
+import Trello from "../Components/Weekly/trello";
 
 const Weekly = () => {
     return(
-        <TodoForm></TodoForm>
+        <div>
+            
+            <TodoForm />
+        </div>
     )
 }
 export default Weekly

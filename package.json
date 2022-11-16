@@ -1,1 +1,5 @@
-{}
+{
+  "dependencies": {
+    "react-trello": "^2.2.11"
+  }
+}
