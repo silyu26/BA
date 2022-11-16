@@ -1,6 +1,10 @@
+import Chart from "../Components/Project/gantt"
+
 const Project = () => {
     return(
-        <div>Project Plan Page</div>
+        <div>
+            <Chart />
+        </div>
     )
 }
 export default Project
