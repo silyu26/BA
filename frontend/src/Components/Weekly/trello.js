@@ -6,6 +6,44 @@ const Trello = () => {
   const [taskd, setD] = useState(null)
   const [taskf, setF] = useState(null)
 
+  const handleDragEnd = async (cardId, sourceLaneId, targetLaneId) => {
+    console.log('drag ended')
+    console.log(`cardId: ${cardId}`)
+    console.log(`sourceLaneId: ${sourceLaneId}`)
+    console.log(`targetLaneId: ${targetLaneId}`)
+    switch (targetLaneId) {
+      case "lane1":
+        const response = await fetch('http://localhost:5000/api/todo/todo/' + cardId, {
+            method: 'PATCH',
+            //body: JSON.stringify(todo),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        break;
+      case "lane2":
+        const response2 = await fetch('http://localhost:5000/api/todo/doing/' + cardId, {
+            method: 'PATCH',
+            //body: JSON.stringify(todo),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        break;
+      case "lane3":
+        const response3 = await fetch('http://localhost:5000/api/todo/finish/'+ cardId, {
+            method: 'PATCH',
+            //body: JSON.stringify(todo),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        break;
+      default:
+        console.log("Error!")
+    }
+  }
+
   useEffect(() => {
     const cleanUp = false
     const fetchT = async () => {
@@ -112,10 +150,14 @@ const Trello = () => {
           }
         ]
       }
+
+      if(data === null) {
+        return <h1> loading </h1>
+     }
       
       return(
         <div>
-            <Board data={data} cardDraggable={true} />
+            <Board data={data} cardDraggable={true} handleDragEnd={handleDragEnd}/>
         </div>
       )
 }

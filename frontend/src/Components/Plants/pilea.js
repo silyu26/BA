@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { SvgPlant, ZamiaGenus, BushyPlantGenus, DragonTreeGenus, PileaGenus } from 'svg-plant';
 
-const Pilea = ({seedd}) => {
+const Pilea = ({seedd, status}) => {
     const svg = useRef(null)
     //const [s,setS] = useState(seedd)
 
@@ -19,7 +19,7 @@ const Pilea = ({seedd}) => {
         };
         const plant = new SvgPlant( genus,cfg )
         const pilea = plant.svgElement;
-        plant.animate( 0, 1, 3000 );
+        plant.animate( 0, status, 3000 );
 
         svg.current.append(pilea)
     },[])

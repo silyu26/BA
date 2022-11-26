@@ -10,7 +10,8 @@ const {
   getAllFinished,
   getAllUnfinished,
   changestatusFinished,
-  changestatusDoing
+  changestatusDoing,
+  changestatusTODO
 } = require('../controllers/todoController')
 
 router.post("/",createToDo)
@@ -21,5 +22,6 @@ router.get("/doing",getAllDoing)
 router.get("/unfinished",getAllUnfinished)
 router.patch("/finish/:id",changestatusFinished)
 router.patch("/doing/:id",changestatusDoing)
+router.patch("/todo/:id",changestatusTODO)
 
 module.exports = router
