@@ -16,11 +16,11 @@ const planSchema = new Schema ({
         required: false
     },
     startDate: {
-        type: Date,
+        type: Number,
         required: true
     },
     endDate: {
-        type: Date,
+        type: Number,
         requried: true
     },
     comment: {

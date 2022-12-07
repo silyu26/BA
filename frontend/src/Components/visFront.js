@@ -58,13 +58,25 @@ const Overview = ({token}) => {
     return(
         <div className='Overview container'>
             <div className='row'>
-                <h1 className='col-xs'>Hi Silyu!</h1>
-                <p className='col-xs'>Current Points: {point}</p>
-                <p className='col-xs'>Current Level: {level}-{levelName}</p>
-                <p className='col-xs'>Next Level: {nextLN} at {nextLP} points!</p>
-                <p className='col-xs'>Current Achievement:</p>
-                <p className='col-xs'>Current Streaks:</p>
-                <p className='col-xs'>Current Badges:</p>
+                <h1 className='col-xs' style={{color: '#EF7270'}}>Hi Silyu!</h1>
+                <p className='col-xs' style={{color: '#EE9F80'}}>Current Points: <p style={{color: '#CDAF7B'}}>666{point}</p></p>
+                <p className='col-xs' style={{color: '#EE9F80'}}>Current Level: <p style={{color: '#CDAF7B'}}>Newbie{level}-{levelName}</p></p>
+                <p className='col-xs' style={{color: '#EE9F80'}}>Next Level: <p style={{color: '#CDAF7B'}}>Starter{nextLN} at 999{nextLP} points!{point}</p></p>
+                <p className='col-xs' style={{color: '#EE9F80'}}>
+                    Current Achievement:
+                    <p style={{color: '#CDAF7B'}}>Welcome!</p> 
+                    <p style={{color: '#CDAF7B'}}>First ToDo Added!</p>
+                    <p style={{color: '#CDAF7B'}}>First Plan Added!</p>
+                </p>
+                <p className='col-xs' style={{color: '#EE9F80'}}>
+                    Current Badges:
+                    <div>
+                        <img src={require('./Pics/Badges/badges1.1.jpg')} style={{width:'50px',height:'50px'}} alt="badges1.1"></img>
+                        <img src={require('./Pics/Badges/badges1.2.jpg')} style={{width:'50px',height:'50px'}} alt="badges1.1"></img>
+                        <img src={require('./Pics/Badges/badges1.3.jpg')} style={{width:'50px',height:'50px'}} alt="badges1.1"></img>
+                        <img src={require('./Pics/Badges/badges2.3.jpg')} style={{width:'50px',height:'50px'}} alt="badges1.1"></img>
+                    </div>
+                </p>
             </div>
         </div>
     )

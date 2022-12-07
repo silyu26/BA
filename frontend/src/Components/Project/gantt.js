@@ -3,7 +3,14 @@ import { useEffect, useState } from 'react'
 import "gantt-task-react/dist/index.css";
 
 const Chart = () => {
-  const [data, setData] = useState([])
+  const [data, setData] = useState([{start: new Date(2020, 6, 1),
+    end: new Date(2020, 6, 1),
+    name: "Add a plan",
+    id: " Add a plan",
+    type:'Add a plan',
+    progress: 45,
+    isDisabled: true,
+    styles:{progressColor: '#ffbb54', progressSelectedColor: '#ff9e0d'}}])
 
   useEffect(() => {
     const cleanUp = false
@@ -13,24 +20,12 @@ const Chart = () => {
       })
       const json = await response.json()
       console.log("json: ",json)
-      if(response.ok && !cleanUp && json !== null) {
+      if(response.ok && !cleanUp) {
         const data1 = []
         let i = 0
 
         while(i < json.length) {
           data1.push({
-            /*
-            start: new Date(json[i].startDate),
-            end: new Date(json[i].endDate),
-            // start: new Date(2020, 6, 1),
-            // end: new Date(2020, 10, 2),
-            name: json[i].content,
-            id: json[i]._id,
-            type:'task',
-            progress: 45,
-            isDisabled: true,
-            styles: { progressColor: '#ffbb54', progressSelectedColor: '#ff9e0d' },
-            */
             start: new Date(json[i].startDate),
             end: new Date(json[i].endDate),
             name: json[i].content,
@@ -41,18 +36,19 @@ const Chart = () => {
             styles: { progressColor: '#ffbb54', progressSelectedColor: '#ff9e0d' }
           })
           i++
-        }
         setData(data1)
       } 
       return () => {
         cleanUp = true
       }
     }
+  }
     fetchData()
   }, [])
     
     //------------------------------------------------------------NEEDED! Otherwise the content disappear after refreshing 
 
+    /*
    const task = [
     {
       start: new Date(2020,5,1),
@@ -85,15 +81,15 @@ const Chart = () => {
         isDisabled: true,
         styles: { progressColor: '#ffbb54', progressSelectedColor: '#ff9e0d' },
       }
-    ]
+    ]*/
 
-    if(data === null) {
-      setData(task)
+    if(!data) {
+      return <div>Loading...</div>
     }
   
     return(
         <div>
-            return <Gantt tasks={task} viewMode={"Week"} preStepsCount={1} />
+          <Gantt tasks={data} viewMode={"Week"} preStepsCount={1} />
         </div>
     )
 }
