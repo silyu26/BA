@@ -157,7 +157,10 @@ const Trello = () => {
       
       return(
         <div>
-            <Board data={data} cardDraggable={true} handleDragEnd={handleDragEnd}/>
+            <Board data={data} cardDraggable={true} handleDragEnd={handleDragEnd}
+             style={{backgroundColor: '#F0F5F9',color:'#2C454B'}}
+             laneStyle={{backgroundColor: '#92E3A9'}}
+             cardStyle={{backgroundColor: '#F0F5F9'}} />
         </div>
       )
 }

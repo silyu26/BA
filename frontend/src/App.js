@@ -10,7 +10,7 @@ import Login from "./Pages/login";
 function App() {
   
   return (
-    <div className="App">
+    <div className="App" style={{backgroundColor: '#F0F5F9'}}>
       <BrowserRouter>
         <Navbar />
         <Routes>

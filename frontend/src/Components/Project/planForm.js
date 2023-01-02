@@ -41,7 +41,8 @@ const PlanForm = () => {
                 <input type='text'
                        className='form-control'
                        onChange={(e) => setTitle(e.target.value)}
-                       value={title} 
+                       value={title}
+                       placeholder='eg. write reports' 
                        required />
             </div>
             <div className='form-group'>
@@ -52,16 +53,19 @@ const PlanForm = () => {
                        value={content} 
                        required />
             </div>
-            <div className='form-grou'>
-                <label>Start:</label>
-                <DatePicker selected={startDate} onChange={(date) => setStart(date.getTime())} value={startDate}/>
-            </div>
-            <div className='form-grou'>
-                <label>End:</label>
-                <DatePicker selected={endDate} onChange={(date) => setEnd(date.getTime())} value={endDate}/>
+            <div class="row">
+                <div className='col'>
+                    <label>Start:</label>
+                    <DatePicker selected={startDate} onChange={(date) => setStart(date.getTime())} value={startDate}/>
+                </div>
+                <div className='col'>
+                    <label>End:</label>
+                    <DatePicker selected={endDate} onChange={(date) => setEnd(date.getTime())} value={endDate}/>
+                </div>
             </div><br/>
-            <button className='btn btn-primary' type='submit'>Add It!</button>
-            
+            <div className='col'>
+                <button className='btn btn-primary' type='submit'>Add It!</button>
+            </div>                      
         </form>
     )
 }

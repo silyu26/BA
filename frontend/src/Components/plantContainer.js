@@ -53,7 +53,7 @@ const Container = () => {
     }
 
     return(
-        <div className='container' style={{width: '750px', height: '1000px' }}>
+        <div className='container' style={{ maxWidth: '750px', maxHeight: '600px', overflowY: 'scroll' }}>
             <div className='row'>
                 {renderPlant()}
             </div>

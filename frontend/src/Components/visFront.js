@@ -58,17 +58,17 @@ const Overview = ({token}) => {
     return(
         <div className='Overview container'>
             <div className='row'>
-                <h1 className='col-xs' style={{color: '#EF7270'}}>Hi Silyu!</h1>
-                <p className='col-xs' style={{color: '#EE9F80'}}>Current Points: <p style={{color: '#CDAF7B'}}>666{point}</p></p>
-                <p className='col-xs' style={{color: '#EE9F80'}}>Current Level: <p style={{color: '#CDAF7B'}}>Newbie{level}-{levelName}</p></p>
-                <p className='col-xs' style={{color: '#EE9F80'}}>Next Level: <p style={{color: '#CDAF7B'}}>Starter{nextLN} at 999{nextLP} points!{point}</p></p>
-                <p className='col-xs' style={{color: '#EE9F80'}}>
+                <h1 className='col-xs' style={{color: '#2C454B'}}>Hi Silyu!</h1>
+                <div className='col-xs' style={{color: '#92E3A9'}}>Current Points: <p style={{color: '#CDAF7B'}}>666{point}</p></div>
+                <div className='col-xs' style={{color: '#92E3A9'}}>Current Level: <p style={{color: '#CDAF7B'}}>Newbie{level}-{levelName}</p></div>
+                <div className='col-xs' style={{color: '#92E3A9'}}>Next Level: <p style={{color: '#CDAF7B'}}>Starter{nextLN} at 999{nextLP} points!{point}</p></div>
+                <div className='col-xs' style={{color: '#92E3A9'}}>
                     Current Achievement:
                     <p style={{color: '#CDAF7B'}}>Welcome!</p> 
                     <p style={{color: '#CDAF7B'}}>First ToDo Added!</p>
                     <p style={{color: '#CDAF7B'}}>First Plan Added!</p>
-                </p>
-                <p className='col-xs' style={{color: '#EE9F80'}}>
+                </div>
+                <div className='col-xs' style={{color: '#92E3A9'}}>
                     Current Badges:
                     <div>
                         <img src={require('./Pics/Badges/badges1.1.jpg')} style={{width:'50px',height:'50px'}} alt="badges1.1"></img>
@@ -76,7 +76,7 @@ const Overview = ({token}) => {
                         <img src={require('./Pics/Badges/badges1.3.jpg')} style={{width:'50px',height:'50px'}} alt="badges1.1"></img>
                         <img src={require('./Pics/Badges/badges2.3.jpg')} style={{width:'50px',height:'50px'}} alt="badges1.1"></img>
                     </div>
-                </p>
+                </div>
             </div>
         </div>
     )
