@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import { useState,useEffect } from "react";
 
-const Overview = ({token}) => {
+const Overview = ({name}) => {
     const [point,setPoint] = useState(null)
     const [levelName,setLevelName] = useState(' ')
     const [level,setLevel] = useState(null)
@@ -9,6 +9,7 @@ const Overview = ({token}) => {
     const [nextLN,setNextLN] = useState(' ')
     const [nextLP,setNextLP] = useState(null)
 
+    /*
     useEffect(() => {
         const fetchStatus = async ()=> {
             const response = await fetch('http://localhost:8080/gamification/visualization/status/thesis/silyu', {
@@ -54,11 +55,12 @@ const Overview = ({token}) => {
             const json = await response.json()
 
     }
+    */
 
     return(
         <div className='Overview container'>
             <div className='row'>
-                <h1 className='col-xs' style={{color: '#2C454B'}}>Hi Silyu!</h1>
+                <h1 className='col-xs' style={{color: '#2C454B'}}>Hi {name}!</h1>
                 <div className='col-xs' style={{color: '#92E3A9'}}>Current Points: <p style={{color: '#CDAF7B'}}>666{point}</p></div>
                 <div className='col-xs' style={{color: '#92E3A9'}}>Current Level: <p style={{color: '#CDAF7B'}}>Newbie{level}-{levelName}</p></div>
                 <div className='col-xs' style={{color: '#92E3A9'}}>Next Level: <p style={{color: '#CDAF7B'}}>Starter{nextLN} at 999{nextLP} points!{point}</p></div>

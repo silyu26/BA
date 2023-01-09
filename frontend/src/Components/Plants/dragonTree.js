@@ -25,7 +25,7 @@ const Dragon = ({seedd, status}) => {
     },[])
     return(
         <div>
-            <div ref={svg} style={{width: "75px",height: "100px"}} />
+            <div ref={svg} style={{width: "110px",height: "150px"}} />
         </div>
     )
 }

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { SvgPlant, ZamiaGenus, BushyPlantGenus, DragonTreeGenus, PileaGenus } from 'svg-plant';
 
-const Bushy = ({seedd, status}) => {
+const Bushy = ({seedd, status, progress}) => {
     const svg = useRef(null)
     //const [s, setS] = useState(seedd)
 
@@ -25,7 +25,7 @@ const Bushy = ({seedd, status}) => {
     },[])
     return(
         <div>
-            <div ref={svg} style={{width: "75px",height: "100px"}} />
+            <div ref={svg} style={{width: "110px",height: "150px"}} />
         </div>
     )
 }

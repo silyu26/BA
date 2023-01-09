@@ -1,30 +1,43 @@
 import Container from "../Components/plantContainer";
-import { useState, useEffect } from "react";
+import { React, useState, useEffect, useContext } from "react";
 import { BushyPlantGenus } from "svg-plant";
 import Login from "./login"
 import Overview from "../Components/visFront";
 import Conn from "../Components/connToGF";
 import jwt_decode from 'jwt-decode';
+import MyContext from "../Components/myContext";
 
 
 
 const Home = () => {
-    const [token, setToken] = useState("")
-    const [gameid, setId] = useState('thesis')
-    const [url, setUrl] = useState('http://localhost:8080/gamification')
-    const [temp, setTmp] = useState(null)
-    const [items, setItems] = useState(null);
+    const [tokens, setToken] = useState("")
+    // const [gameid, setId] = useState('thesis')
+    // const [url, setUrl] = useState('http://localhost:8080/gamification')
+    const [name, setName] = useState('')
+
 
     useEffect(() => {
-      const items = sessionStorage.getItem('access-token');
-      if (items) {
-      setItems(items);
-      }
-      const tmp = jwt_decode(items)
-      const tmp2 = tmp['sub']
-      setToken(tmp2)
-      console.log("token",token)
+        const newInterval = () => {
+          const token = sessionStorage.getItem('access-token');
+          if (!token) {
+            
+          } else {
+            setToken(token)
+            const tmp = jwt_decode(token)
+            setName(tmp['given_name'])
+            console.log("working")
+          }
+        }
+        const checkToken = setTimeout(newInterval, 1000)
+    
+        return () => {
+          if(tokens) {
+            clearTimeout(checkToken); // Clean up the interval when the component unmounts
+            console.log("cleaning up")
+          }
+          }
     }, []);
+    /*
     useEffect(() => {
         const validate = async() => {
             const cleanUp = false
@@ -47,6 +60,7 @@ const Home = () => {
         }
         validate()
     },[items])
+    */
 
     return(
         <div className="container">
@@ -54,10 +68,9 @@ const Home = () => {
                 <div className="col" >
                     <Container />
                 </div>
-                <div className="col">
-                    <Overview token={token} />
+                <div className="col-3">
+                    <Overview name={name} />
                 </div>
-                
             </div>
             
         </div>

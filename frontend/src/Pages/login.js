@@ -5,6 +5,6 @@ const Login = () => {
         <div>
             <openidconnect-signin-react oidcClientId="BA_Silyu_Li" popupRedirectUri="http://localhost:3000/"></openidconnect-signin-react>
         </div>
-    )//invisible={false}
+    )//
 }
 export default Login

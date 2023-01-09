@@ -10,9 +10,8 @@ const planSchema = new Schema ({
         type: String,
         required: true
     },
-    status: {
-        type: String,
-        default: "To Do",
+    progress: {
+        type: Number,
         required: false
     },
     startDate: {
@@ -23,10 +22,6 @@ const planSchema = new Schema ({
         type: Number,
         requried: true
     },
-    comment: {
-        type: String,
-        required: false
-    },
     seed: {
         type: Number,
         default: Math.floor(Math.random()*100)
@@ -34,6 +29,14 @@ const planSchema = new Schema ({
     plant: {
         type: String,
         default: ["Bushy","Dragon","Pilea","Zamia"][Math.floor(Math.random()*4)]
+    },
+    todo: {
+        type: [String],
+        default: []
+    },
+    owner: {
+        type: String,
+        required: true
     }
 },{timestamps: false})
 

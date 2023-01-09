@@ -2,7 +2,22 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Link } from 'react-router-dom';
 import Login from "../Pages/login"
 
-const Navbar = () => {
+const Navbar = (token) => {
+
+  /*
+  const hideLogin = () => {
+    if(token) {
+      return(
+        <div className="col">
+          <Login />
+        </div>
+      ) 
+    } else {
+      return(<div></div>)
+    } 
+  }
+  */
+
     return(
         <header>
             <div className="navbar navbar-dark" style={{'backgroundColor' : '#2C454B'}}> 

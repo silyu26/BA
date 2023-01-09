@@ -10,10 +10,6 @@ const todoSchema = new Schema({
         type: String,
         required: true
     },
-    comment: {
-        type: String,
-        required: false
-    },
     status: {
         type: String,
         default: "To Do"
@@ -22,13 +18,13 @@ const todoSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    seed: {
+    dueDate: {
         type: Number,
-        default: Math.floor(Math.random()*100)
+        required: false
     },
-    plant: {
+    ofPlan: {
         type: String,
-        default: ["Bushy","Dragon","Pilea","Zamia"][Math.floor(Math.random()*4)]
+        required: true
     }
 },{timestamps: false})
 
